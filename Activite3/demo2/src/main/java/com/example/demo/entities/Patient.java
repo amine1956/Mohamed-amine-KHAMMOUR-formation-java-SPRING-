@@ -1,6 +1,5 @@
 package com.example.demo.entities;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 @ToString
 @Entity
@@ -20,8 +18,10 @@ public class Patient {
     @Column(length = 50)
     private String nom;
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private Date DateNaissnace;
     private boolean malade;
+    @OneToMany(mappedBy = "patient")
+    private Collection<RendezVous> rendezVous;
     private int score;
 
 

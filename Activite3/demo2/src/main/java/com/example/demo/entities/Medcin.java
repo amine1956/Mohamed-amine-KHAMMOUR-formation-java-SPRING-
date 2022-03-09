@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,24 +8,19 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
 @ToString
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
-public class Patient {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Medcin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 50)
     private String nom;
-    @Temporal(TemporalType.DATE)
-    private Date date;
-    private boolean malade;
-    private int score;
-
-
-
-
-
+    private String email;
+    private  String specialete;
+    @OneToMany(mappedBy = "medcin")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Collection<RendezVous> rendezVous;
 }

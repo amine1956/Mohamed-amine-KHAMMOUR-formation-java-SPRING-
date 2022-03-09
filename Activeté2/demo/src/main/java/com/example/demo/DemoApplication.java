@@ -30,9 +30,13 @@ private PatientRepository patientRepository;
             System.out.println(p.getId());
             System.out.println(p.getDate());
             System.out.println(p.getNom());
-            Patient patient=patientRepository.findById(1L).get();
+            Patient patient=patientRepository.findById(17L).get();
             System.out.println(patient);
              });
-        patientRepository.deleteById(1L);
+        patientRepository.deleteById(17L);
+        List<Patient> pa=patientRepository.findAllByScoreBetween(14,90);
+      pa.forEach(p-> System.out.println(p));
     }
+
 }
+
