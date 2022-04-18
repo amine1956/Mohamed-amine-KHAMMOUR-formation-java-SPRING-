@@ -5,6 +5,7 @@ import com.example.demo11.Securite.Entite.AppUser;
 import com.example.demo11.Securite.Reposetory.AppRoleReposetory;
 import com.example.demo11.Securite.Reposetory.AppUserReposetory;
 import groovy.util.logging.Slf4j;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

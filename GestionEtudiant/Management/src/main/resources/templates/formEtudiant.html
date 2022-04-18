@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="template1">
+      layout:decorate="template1" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" >
     <title>Title</title>
@@ -12,6 +12,7 @@
 <body>
 <div layout:fragment="content1">
     <div class="col-md-6 offset-3">
+        <h1 style="text-align: center"> Ajouter un Etudient</h1>
 <form method="post" th:action="@{/Admin/save}">
     <div >
         <label >nom</label>
@@ -32,23 +33,29 @@
 
     </div>
 
-    <div>
-        <label>regle</label>
+    <div class="mb-3 text-center">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="enRegle" th:checked="${etudiant.enRegle}"
+                   id="enRegle" value="true">
+            <label class="form-check-label" for="enRegle">
+                en règle
+            </label>
+        </div>
 
-        <input   type="checkbox" name="regle"
-               th:checked="${etudiant.regle}">
-        <span th:errors="${etudiant.regle}"></span>
-    </div>
+        <div class="mb-3">
+            <label for="genre" class="form-label fw-bold">Sexe de l'étudiant : </label>
+            <select class="form-select" id="genre" name="genre">
+                <option selected disabled> Choisir le genre...</option>
+                <option value="M" th:selected="${etudiant.genre=='M'}"> M</option>
+                <option value="F" th:selected="${etudiant.genre=='F'}"> F</option>
+            </select>
+            <small class="text-danger" th:errors="${etudiant.genre}"></small>
+        </div>
 
 
 
-    <div>
-        <label>Emial</label>
-        <input class="form-control" type="text" name="score" th:value="${etudiant.email}">
-        <span class="text-danger" th:errors="${etudiant.email}"></span>
-
-    </div>
     <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
 </form>
     </div>
     </div>

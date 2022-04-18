@@ -7,7 +7,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Size;
 import java.util.Date;
 @Data
@@ -20,12 +19,10 @@ public class Etudiant {
     private Long id ;
     @Size(min = 4,max = 50)
     private String nom ;
-    private String prenom;
+    private String Prenom ;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
-    private String Email;
-    private Boolean regle;
-    private StatueGenre Genre;
-
+    private Boolean EnRegle;
+    private  StatueGenre Genre;
 }

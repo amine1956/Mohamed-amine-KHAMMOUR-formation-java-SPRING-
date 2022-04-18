@@ -1,5 +1,6 @@
 package com.example.demo11.Securite.Entite;
 
+import com.sun.xml.internal.ws.server.ServerRtException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

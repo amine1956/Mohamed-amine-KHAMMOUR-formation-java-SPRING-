@@ -1,10 +1,8 @@
 package com.example.demo11;
 
 import com.example.demo11.Entite.Etudiant;
-
 import com.example.demo11.Entite.StatueGenre;
 import com.example.demo11.Reposetories.EtudiantReposetory;
-
 
 import com.example.demo11.Securite.Service.SecuriteService;
 import org.springframework.boot.CommandLineRunner;
@@ -20,13 +18,14 @@ public class Demo11Application {
     public static void main(String[] args) {
         SpringApplication.run(Demo11Application.class, args);
     }
+
 //@Bean
     CommandLineRunner commandLineRunner(EtudiantReposetory etudiantReposetory){
         return args -> {
-            etudiantReposetory.save(new Etudiant(null,"Khamour","amine",new Date(),"amineklm983@gmail.com",false, StatueGenre.F)) ;
-            etudiantReposetory.save(new Etudiant(null,"Khamour","amine",new Date(),"amineklm983@gmail.com",false, StatueGenre.F)) ;
-            etudiantReposetory.save(new Etudiant(null,"Khamour","amine",new Date(),"amineklm983@gmail.com",false, StatueGenre.F)) ;
-            etudiantReposetory.save(new Etudiant(null,"Khamour","amine",new Date(),"amineklm983@gmail.com",false, StatueGenre.F)) ;
+            etudiantReposetory.save(new Etudiant(null,"amine","khammour",new Date(),false, StatueGenre.F)) ;
+            etudiantReposetory.save(new Etudiant(null,"khalid","prenom",new Date(),true,StatueGenre.F)) ;
+            etudiantReposetory.save(new Etudiant(null,"hatim","prenom",new Date(),false,StatueGenre.M)) ;
+            etudiantReposetory.save(new Etudiant(null,"rafik","prenom",new Date(),true,StatueGenre.M)) ;
 
             etudiantReposetory.findAll().forEach(etudiant -> {
                 System.out.println(etudiant.getNom());
@@ -34,8 +33,7 @@ public class Demo11Application {
 
         };
 }
-
-@Bean
+//@Bean
 CommandLineRunner SaveUser(SecuriteService securiteService){
         return args -> {
           securiteService.saveNewUser("mohamed","1234","1234");

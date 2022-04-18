@@ -47,7 +47,7 @@ public class securiteConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/Admin/**").hasAuthority("ADMIN");
         http.authorizeRequests().antMatchers("/user/**").hasAuthority("USER");
-        http.authorizeRequests().antMatchers("/webjars/**").permitAll();
+        http.authorizeRequests().antMatchers("/webjars/**", "/js/**", "/css/**", "/images/**").permitAll(); // permit static resources
     http.authorizeRequests().antMatchers("/").permitAll();
 
         http.formLogin();

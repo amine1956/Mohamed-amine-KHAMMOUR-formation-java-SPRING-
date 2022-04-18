@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @AllArgsConstructor
 
 public class ContrlerEtudiant {
-    private EtudiantReposetory EtdiantReposetory;
+    private EtudiantReposetory etudiantReposetory;
 
     @GetMapping(path="/user/index")
     public String patiates(Model model ,
@@ -27,41 +27,40 @@ public class ContrlerEtudiant {
                            @RequestParam(name = "keyword",defaultValue ="") String keyword)
 
     {
-        
-        Page<Etudiant> pageEtudiant= EtdiantReposetory.findByNomContains(keyword,PageRequest.of(page,size));
-        model.addAttribute("PageEtudiant",pageEtudiant.getContent());
-        model.addAttribute("nombrePages",new int[pageEtudiant.getTotalPages()]);
+        Page<Etudiant> pagePatient= etudiantReposetory.findByNomContains(keyword,PageRequest.of(page,size));
+        model.addAttribute("PageEudiant",pagePatient.getContent());
+        model.addAttribute("nombrePages",new int[pagePatient.getTotalPages()]);
         model.addAttribute("currentPage",page);
         model.addAttribute("keyword",keyword);
-        return "Etudiant";
+        return "Etudiant.html";
     }
     @GetMapping("/Admin/delete")
     public String delete(long id,String keyword,int page){
-        EtdiantReposetory.deleteById(id);
+        etudiantReposetory.deleteById(id);
         return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
 
-    @GetMapping("/Admin/formepatient")
+    @GetMapping("/Admin/formeEtudiant")
 
-    public String formepatient(Model model){
+    public String formeEtudiant(Model model){
         model.addAttribute("etudiant",new Etudiant());
-        return "formeEtudiant";
+        return "formEtudiant";
     }
     @PostMapping(path = "/Admin/save")
-    public String save(Model model, @Valid Etudiant etudiant, BindingResult bindingResult,@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "") String keyword){
-        if(bindingResult.hasErrors()) return "formeEtudiant";
-        EtdiantReposetory.save(etudiant);
+    public String save(Model model, @Valid Etudiant etudiant, BindingResult bindingResult, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "") String keyword){
+        if(bindingResult.hasErrors()) return "formEtudiant";
+        etudiantReposetory.save(etudiant);
         return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
-    @GetMapping(path = "/Admin/editEtudiant")
-    public String editEtudiant(Model model , Long id , String keyword, int page){
-        Etudiant etudiant= EtdiantReposetory.findById(id).orElse(null);
-        if(etudiant==null) new RuntimeException("Eudiat nxicte pas");
-        model.addAttribute("etudiant",etudiant);
+    @GetMapping(path = "/Admin/editEtudaint")
+    public String editEtudaint(Model model ,Long id ,String keyword,int page){
+        Etudiant etudiant = etudiantReposetory.findById(id).orElse(null);
+        if(etudiant ==null) new RuntimeException("etudiant nxicte pas");
+        model.addAttribute("etudiant", etudiant);
         model.addAttribute("keyword",keyword);
         model.addAttribute("page",page);
 
-        return "editeEtudiant";
+        return "editetudaint";
 
     }
     @GetMapping("/")
