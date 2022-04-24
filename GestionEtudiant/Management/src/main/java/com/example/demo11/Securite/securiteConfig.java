@@ -45,13 +45,15 @@ public class securiteConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin().loginPage("/login").permitAll(); // default login page
+        http.csrf().disable();
+
         http.authorizeRequests().antMatchers("/Admin/**").hasAuthority("ADMIN");
         http.authorizeRequests().antMatchers("/user/**").hasAuthority("USER");
-        http.authorizeRequests().antMatchers("/webjars/**", "/js/**", "/css/**", "/images/**").permitAll(); // permit static resources
+        http.authorizeRequests().antMatchers("/webjars/**", "/js/**", "/css/**", "/images/**","/resources/**", "/static/**", "/css/**").permitAll(); // permit static resources
     http.authorizeRequests().antMatchers("/").permitAll();
 
-        http.formLogin();
-        http.authorizeRequests().anyRequest().authenticated();
+
         http.exceptionHandling().accessDeniedPage("/403");
 
 

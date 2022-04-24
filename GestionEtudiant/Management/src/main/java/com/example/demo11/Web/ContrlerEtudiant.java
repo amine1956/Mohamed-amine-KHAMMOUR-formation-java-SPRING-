@@ -21,10 +21,10 @@ public class ContrlerEtudiant {
     private EtudiantReposetory etudiantReposetory;
 
     @GetMapping(path="/user/index")
-    public String patiates(Model model ,
-                           @RequestParam(name ="page" ,defaultValue = "0") int page,
-                           @RequestParam(name = "size",defaultValue = "5") int size,
-                           @RequestParam(name = "keyword",defaultValue ="") String keyword)
+    public String Etudianta(Model model ,
+                            @RequestParam(name ="page" ,defaultValue = "0") int page,
+                            @RequestParam(name = "size",defaultValue = "5") int size,
+                            @RequestParam(name = "keyword",defaultValue ="") String keyword)
 
     {
         Page<Etudiant> pagePatient= etudiantReposetory.findByNomContains(keyword,PageRequest.of(page,size));
@@ -66,6 +66,23 @@ public class ContrlerEtudiant {
     @GetMapping("/")
     public String Home(){
         return "index";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model, String error, String logout){
+
+        if (error != null)
+            model.addAttribute("errorMsg", "username ou mot de passe erroné .");
+        else
+            model.addAttribute("errorMsg", "");
+
+        if (logout != null)
+            model.addAttribute("msg", "Déconnecté avec succès.");
+        else
+            model.addAttribute("msg", "");
+
+
+        return "login";
     }
 
 }

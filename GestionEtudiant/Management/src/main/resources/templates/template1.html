@@ -2,24 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
-<style>
+      xmlns="http://www.w3.org/1999/html">
 
-    body{
-
-        background: linear-gradient(black, red);
-
-
-    }
-
-</style>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.js"></script>
+    <style>
+    body{
+    background: -webkit-linear-gradient(left, black, blue);
+    background: linear-gradient(to right, blue, black);
+    font-family: 'Roboto', sans-serif;
+    }
+    </style>
 </head>
-<body class="a">
+<body >
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
         <ul class="navbar-nav">
@@ -36,6 +34,15 @@
                 </ul>
             </li>
         </ul>
+        <ul class="navbar-nav" sec:authorize="isAuthenticated()" >
+            <form method="get" th:action="@{/user/index}" style="text-align: center; ">
+
+                <div class="input-group">
+                    <input type="text" name="keyword" th:value="${keyword}" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <button type="submit" class="btn btn-outline-primary">search</button>
+                </div>
+            </form>
+        </ul>
         <ul class="navbar-nav" >
 
             <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
@@ -44,7 +51,7 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a   class="dropdown-item" th:href="@{/logout}">logout</a></li>
+                    <li><a   class="dropdown-item"  href="/logout">logout</a></li>
                 </ul>
             </li>
             <li class="nav-item">

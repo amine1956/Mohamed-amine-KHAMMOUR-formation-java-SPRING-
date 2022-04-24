@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Login Form with floating placeholder and light button</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div layout:fragment="content1">
+
+<div class="login-box">
+  <h2>Login</h2>
+  <form method="post" th:action="@{/login}"  id="my_form">
+    <div class="user-box">
+      <input type="text" name="username" required="" id="username">
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="password"  required="" id="password">
+      <label>Password</label>
+    </div>
+    <a href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+</div>
+<!-- partial -->
+</div>
+</body>
+</html>
