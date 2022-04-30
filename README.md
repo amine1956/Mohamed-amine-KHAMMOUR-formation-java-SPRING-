@@ -49,7 +49,7 @@
     <tr>
     <td>8</td>
     <td>MiniProjet</td>
-    <td><a href="https://github.com/amine1956/Mohamed-amine-KHAMMOUR-formation-java-SPRING-/tree/main/GestionEtudiant">🔗</a></td>
+    <td><a href="https://github.com/amine1956/Mohamed-amine-KHAMMOUR-formation-java-SPRING-/tree/main/MiniProjet">🔗</a></td>
   </tr>
 </table>
 
